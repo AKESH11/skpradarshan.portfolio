@@ -46,7 +46,7 @@ const Home = () => (
             <p className="text-lg md:text-xl mb-6 text-gray-300 slide-up">Aspiring Software Engineer | Full-Stack Developer | Game Development Enthusiast</p>
             <div className="flex justify-center gap-4">
                 <a href="#projects" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition scale-hover">Explore My Work</a>
-                <a href="resume.pdf" download className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition scale-hover">Download Resume</a>
+                <a href="./Resume.pdf" download className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition scale-hover">Download Resume</a>
             </div>
         </div>
     </section>
@@ -83,7 +83,7 @@ const Education = () => (
                     },
                     {
                         degree: 'Senior Secondary Education',
-                        institution: 'Tagore Senior Secondary School, New Delhi',
+                        institution: 'D.T.E.A Senior Secondary School, New Delhi',
                         period: 'Graduation Year: 2022'
                     },
                     {
@@ -202,14 +202,14 @@ const Projects = () => {
         {
           title: 'MCP for Telegram',
             description: 'A robust integration that enables seamless AI-powered messaging and automated chat management on Telegram. Streamlines workflows and provides secure programmatic access through Model Context Protocol.',
-            image: 'tele1.png',
+            image: './tele1.png',
             tech: ['React', 'JavaScript', 'CSS'],
             link: 'https://github.com/yourusername/personal-blog'  
         },
         {
             title: 'ArtisanConnectAI',
             description: 'A vibrant marketplace platform connecting skilled artisans with global buyers. Designed to empower craftsmanship, promote unique handmade creations, and foster sustainable trade worldwide.',
-            image: 'artisan.jpg',
+            image: './artisan.jpg',
             tech: ['React', 'Firebase', 'JavaScript', 'Tailwind CSS'],
             link: 'https://github.com/yourusername/artisanconnectai'
         },
