@@ -142,27 +142,33 @@ const Skills = () => {
 };
 
 // Achievements Component
+// Achievements Component
 const Achievements = () => {
     const achievements = [
         {
             title: 'TechQuest, CIT, Chennai',
-            description: 'Secured 1st Place in Coding Quest Contest, demonstrating strong problem-solving and algorithmic skills.'
+            description: 'Secured 1st Place in Coding Quest Contest, demonstrating strong problem-solving and algorithmic skills.',
+            link: 'https://www.linkedin.com/posts/s-k-pradarshan-1b05b2290_techquest2025-cit-innovation-activity-7301176771415064576-XHTU/' // <-- TODO: Add link to your certificate
         },
         {
             title: 'BuzzFeed, SRM VEC, Chennai',
-            description: 'Secured 3rd Place in Programming Contest organized by Vecoders club.'
+            description: 'Secured 3rd Place in Programming Contest organized by Vecoders club.',
+            link: 'https://www.linkedin.com/posts/s-k-pradarshan-1b05b2290_landing-3rd-place-in-buzzfeed-competition-activity-7246910864593715200-mU6F/' // <-- TODO: Add link to your certificate
         },
         {
             title: 'Model United Nations',
-            description: 'Secured honorable mentions in MUN UNEA committee organized by MUN Club.'
+            description: 'Secured honorable mentions in MUN UNEA committee organized by MUN Club.',
+            link: 'https://www.linkedin.com/posts/s-k-pradarshan-1b05b2290_mun-unea-srmvec-activity-7317248061921972224-PLIF/' // <-- TODO: Add link to your certificate
         },
         {
             title: 'Sports Involvement',
-            description: 'Secured 3rd Place in Inter-House Badminton Tournament.'
+            description: 'Secured 3rd Place in Inter-House Badminton Tournament.',
+            link: 'https://www.linkedin.com/posts/s-k-pradarshan-1b05b2290_sportsachievement-badminton-hardworkpaysoff-activity-7308102687185629187-l7I6/' // <-- TODO: Add link to your certificate
         },
         {
             title: 'Data Fury, SRM VEC, Chennai',
-            description: 'Secured 3rd Place in IPL auction analysis (Power BI) organized by Vecoders Club.'
+            description: 'Secured 3rd Place in IPL auction analysis (Power BI) organized by Vecoders Club.',
+            link: 'https://www.linkedin.com/posts/s-k-pradarshan-1b05b2290_powerbi-dataanalytics-businessintelligence-activity-7357051905929351168-877_/' // <-- TODO: Add link to your certificate
         }
     ];
 
@@ -172,10 +178,18 @@ const Achievements = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center gradient-text fade-in">Achievements</h2>
                 <div className="max-w-2xl mx-auto grid gap-6">
                     {achievements.map((achievement, index) => (
-                        <div key={achievement.title} className="bg-gray-800 p-6 rounded-lg shadow-md slide-up scale-hover" style={{ animationDelay: `${index * 0.2}s` }}>
+                        // The entire card is now a link that opens in a new tab
+                        <a
+                            key={achievement.title}
+                            href={achievement.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block bg-gray-800 p-6 rounded-lg shadow-md slide-up scale-hover" // The styling is moved to the <a> tag
+                            style={{ animationDelay: `${index * 0.2}s` }}
+                        >
                             <h3 className="text-xl md:text-2xl font-semibold gradient-text">{achievement.title}</h3>
                             <p className="text-base md:text-lg text-gray-300">{achievement.description}</p>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>
