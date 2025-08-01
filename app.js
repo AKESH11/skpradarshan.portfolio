@@ -159,6 +159,10 @@ const Achievements = () => {
         {
             title: 'Sports Involvement',
             description: 'Secured 3rd Place in Inter-House Badminton Tournament.'
+        },
+        {
+            title: 'Data Fury, SRM VEC, Chennai',
+            description: 'Secured 3rd Place in IPL auction analysis (Power BI) organized by Vecoders Club.'
         }
     ];
 
