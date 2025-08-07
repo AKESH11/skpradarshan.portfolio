@@ -366,11 +366,11 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 // --- Achievements Component ---
 const Achievements = () => {
     const achievements = [
-        { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './certificates/techquest.png' },
-        { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './certificates/buzzfeed.png' },
-        { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './certificates/mun.png' },
-        { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './certificates/sports.png' },
-        { title: 'Data Fury, SRM VEC, Chennai', description: 'Secured 3rd Place in IPL auction analysis (Power BI).', link: './certificates/datafury.png' }
+        { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
+        { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
+        { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './Certificates/mun.png' },
+        { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './Certificates/sports.png' },
+        { title: 'Data Fury, SRM VEC, Chennai', description: 'Secured 3rd Place in IPL auction analysis (Power BI).', link: './Certificates/datafury.png' }
     ];
     const [expandedAchievement, setExpandedAchievement] = useState(null);
     const handleToggle = (title) => {
@@ -415,9 +415,9 @@ const ProjectCard = ({ title, description, image, tech, link }) => (
 // --- Projects Component ---
 const Projects = () => {
     const projects = [
-        { title: 'MCP for Telegram', description: 'A robust integration that enables seamless AI-powered messaging and automated chat management on Telegram.', image: './tele1.png', tech: ['React', 'JavaScript', 'CSS'], link: 'https://github.com/AKESH11' },
-        { title: 'ArtisanConnectAI', description: 'A vibrant marketplace platform connecting skilled artisans with global buyers.', image: './artisan.jpg', tech: ['React', 'Firebase', 'Tailwind CSS'], link: 'https://github.com/AKESH11' },
-        { title: 'Weather predictor', description: 'A dynamic weather widget delivering real-time updates and accurate forecasts.', image: './weather2.png', tech: ['HTML', 'CSS', 'React'], link: 'https://github.com/AKESH11' }
+        { title: 'CatchTheSqaure', description: 'Catch the Square is a fast-paced web game where you click moving squares to score points.', image: './catchthesquare.png', tech: ['React', 'JavaScript', 'CSS'], link: 'https://akesh11.github.io/CatchTheSquare/' },
+        { title: 'ArtisanConnectAI', description: 'A vibrant marketplace platform connecting skilled artisans with global buyers.', image: './artisan.jpg', tech: ['React', 'Firebase', 'Tailwind CSS'], link: 'https://akesh11.github.io/ArtisanConnectAI/' },
+        { title: 'Weather predictor', description: 'A dynamic weather widget delivering real-time updates and accurate forecasts.', image: './weather2.png', tech: ['HTML', 'CSS', 'React'], link: 'https://akesh11.github.io/weather.widget/' }
     ];
     return (
         <Section id="projects" title="My Projects" className="bg-transparent">
