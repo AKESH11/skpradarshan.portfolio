@@ -366,11 +366,11 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 // --- Achievements Component ---
 const Achievements = () => {
     const achievements = [
-        { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './certificates/techquest.png' },
-        { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './certificates/buzzfeed.png' },
-        { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './certificates/mun.png' },
-        { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './certificates/sports.png' },
-        { title: 'Data Fury, SRM VEC, Chennai', description: 'Secured 3rd Place in IPL auction analysis (Power BI).', link: './certificates/datafury.png' }
+        { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
+        { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
+        { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './Certificates/mun.png' },
+        { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './Certificates/sports.png' },
+        { title: 'Data Fury, SRM VEC, Chennai', description: 'Secured 3rd Place in IPL auction analysis (Power BI).', link: './Certificates/datafury.png' }
     ];
     const [expandedAchievement, setExpandedAchievement] = useState(null);
     const handleToggle = (title) => {
