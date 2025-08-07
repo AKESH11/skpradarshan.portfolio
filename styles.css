@@ -2,32 +2,37 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    /* Add smooth scrolling for anchor links */
+    scroll-behavior: smooth;
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-in;
+/* --- Navbar Transition --- */
+.navbar-scrolled {
+    background-color: rgba(26, 32, 44, 0.8); /* Semi-transparent dark bg */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
-.slide-up {
-    animation: slideUp 0.8s ease-out;
+/* --- Scroll-Triggered Animation --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- General Hover & Gradient --- */
 .scale-hover {
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .scale-hover:hover {
-    transform: scale(1.03);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    transform: scale(1.05);
 }
 
 .gradient-text {
@@ -36,6 +41,16 @@ body {
     background-clip: text;
     color: transparent;
 }
+
+/* --- Project Card Hover Effect --- */
+.project-card-image {
+    transition: transform 0.4s ease-in-out;
+}
+
+.project-card:hover .project-card-image {
+    transform: scale(1.1);
+}
+
 
 ::selection {
     background: #60a5fa;
