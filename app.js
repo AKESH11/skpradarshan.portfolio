@@ -2,7 +2,6 @@ const { useState, useEffect, useRef } = React;
 const { createRoot } = ReactDOM;
 
 // --- Background Canvas Component ---
-// Creates the "Cosmic Nebula & Starfield" animation.
 const BackgroundCanvas = () => {
     const canvasRef = useRef(null);
 
@@ -220,9 +219,27 @@ const NavBar = () => {
     );
 };
 
-// --- Home Component ---
+// --- Home Component (UPDATED with Download Status) ---
 const Home = () => {
     const typedTitle = useTypingEffect("  Hi, I'm S. K. Pradarshan", 80);
+    const [downloadStatus, setDownloadStatus] = useState('');
+
+    const handleDownload = () => {
+        setDownloadStatus('Downloading...');
+
+        const link = document.createElement('a');
+        link.href = './Resume.pdf';
+        link.setAttribute('download', 'SKP_Resume.pdf');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setTimeout(() => {
+            setDownloadStatus('Downloaded!');
+            setTimeout(() => setDownloadStatus(''), 3000);
+        }, 2000);
+    };
+
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative">
             <div className="text-center px-6 z-10">
@@ -235,8 +252,18 @@ const Home = () => {
                 </p>
                 <div className="flex justify-center gap-4 reveal visible" style={{ transitionDelay: '3.2s' }}>
                     <a href="#projects" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition scale-hover">Explore My Work</a>
-                    <a href="./Resume.pdf" download className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition scale-hover">Download Resume</a>
+                    <button 
+                        onClick={handleDownload}
+                        className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition scale-hover"
+                    >
+                        Download Resume
+                    </button>
                 </div>
+                {downloadStatus && (
+                    <p className="text-gray-400 text-sm mt-4 transition-opacity duration-300">
+                        {downloadStatus}
+                    </p>
+                )}
             </div>
         </section>
     );
@@ -437,43 +464,27 @@ const Projects = () => {
 
 // --- Contact Component with Full Functionality ---
 const Contact = () => {
-    // UPDATED with your endpoint
     const FORM_ENDPOINT = "https://formspree.io/f/xnnzopvv"; 
-
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isSubmitting) return;
-
         if (!formData.name || !formData.email || !formData.message) {
             setStatus('Please fill out all fields.');
             return;
         }
-
         setIsSubmitting(true);
         setStatus('Sending...');
-
         fetch(FORM_ENDPOINT, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify(formData)
         })
         .then(response => {
@@ -506,45 +517,32 @@ const Contact = () => {
                     <div className="mb-4">
                         <label className="block text-gray-300 mb-2" htmlFor="name">Name</label>
                         <input 
-                            type="text" 
-                            id="name" 
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
+                            type="text" id="name" name="name"
+                            value={formData.name} onChange={handleChange}
                             className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white transition duration-300" 
-                            placeholder="Your Name" 
-                            required 
+                            placeholder="Your Name" required 
                         />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-300 mb-2" htmlFor="email">Email</label>
                         <input 
-                            type="email" 
-                            id="email"
-                            name="email" 
-                            value={formData.email}
-                            onChange={handleChange}
+                            type="email" id="email" name="email" 
+                            value={formData.email} onChange={handleChange}
                             className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white transition duration-300" 
-                            placeholder="Your Email" 
-                            required 
+                            placeholder="Your Email" required 
                         />
                     </div>
                     <div className="mb-6">
                         <label className="block text-gray-300 mb-2" htmlFor="message">Message</label>
                         <textarea 
-                            id="message"
-                            name="message" 
-                            value={formData.message}
-                            onChange={handleChange}
+                            id="message" name="message" 
+                            value={formData.message} onChange={handleChange}
                             className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white transition duration-300" 
-                            rows="5" 
-                            placeholder="Your Message"
-                            required
+                            rows="5" placeholder="Your Message" required
                         ></textarea>
                     </div>
                     <button 
-                        type="submit" 
-                        disabled={isSubmitting}
+                        type="submit" disabled={isSubmitting}
                         className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 w-full transition scale-hover disabled:bg-gray-500 disabled:cursor-not-allowed"
                     >
                         {isSubmitting ? 'Sending...' : 'Send Message'}
