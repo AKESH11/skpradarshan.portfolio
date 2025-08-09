@@ -9,114 +9,58 @@ const BackgroundCanvas = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let animationFrameId;
+        let time = 0;
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Gradient "orb" properties
+        const orbs = [
+            { x: 0.5, y: 0.5, speedX: 0.0005, speedY: 0.0007, size: 0.8, color: 'rgba(255, 255, 255, 0.15)' }, // Soft White
+            { x: 0.3, y: 0.7, speedX: -0.0006, speedY: 0.0005, size: 0.6, color: 'rgba(168, 85, 247, 0.15)' }, // Soft Purple
+            { x: 0.7, y: 0.3, speedX: 0.0007, speedY: -0.0006, size: 0.7, color: 'rgba(255, 255, 255, 0.1)' } // Faint White
+        ];
 
-        const settings = {
-            starCount: 1500,
-            nebulaCount: 15,
-        };
-
-        let stars = [];
-        let nebulae = [];
-
-        class Star {
-            constructor() {
-                this.x = (Math.random() - 0.5) * canvas.width;
-                this.y = (Math.random() - 0.5) * canvas.height;
-                this.z = Math.random() * canvas.width;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speed = (this.z / canvas.width) * 0.4 + 0.1;
-            }
-
-            update() {
-                this.z -= this.speed;
-                if (this.z < 1) {
-                    this.z = canvas.width;
-                    this.x = (Math.random() - 0.5) * canvas.width;
-                    this.y = (Math.random() - 0.5) * canvas.height;
-                }
-            }
-
-            draw() {
-                const k = 128 / this.z;
-                const px = this.x * k + canvas.width / 2;
-                const py = this.y * k + canvas.height / 2;
-
-                if (px > 0 && px < canvas.width && py > 0 && py < canvas.height) {
-                    const alpha = (1 - this.z / canvas.width);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-                    ctx.beginPath();
-                    ctx.arc(px, py, this.size * k, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-        }
-
-        class Nebula {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 300 + 200;
-                this.speedX = (Math.random() - 0.5) * 0.05;
-                this.speedY = (Math.random() - 0.5) * 0.05;
-                this.color1 = `rgba(168, 85, 247, ${Math.random() * 0.1 + 0.05})`; // Purple
-                this.color2 = `rgba(96, 165, 250, ${Math.random() * 0.1 + 0.05})`;  // Blue
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x + this.size < 0) this.x = canvas.width + this.size;
-                if (this.x - this.size > canvas.width) this.x = -this.size;
-                if (this.y + this.size < 0) this.y = canvas.height + this.size;
-                if (this.y - this.size > canvas.height) this.y = -this.size;
-            }
-
-            draw() {
-                const gradient = ctx.createRadialGradient(this.x, this.y, this.size * 0.1, this.x, this.y, this.size);
-                gradient.addColorStop(0, this.color1);
-                gradient.addColorStop(0.5, this.color2);
-                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-                ctx.fillStyle = gradient;
-                ctx.fillRect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
-            }
-        }
-
-        function init() {
-            stars = [];
-            nebulae = [];
-            for (let i = 0; i < settings.starCount; i++) {
-                stars.push(new Star());
-            }
-            for (let i = 0; i < settings.nebulaCount; i++) {
-                nebulae.push(new Nebula());
-            }
-        }
-
-        function animate() {
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            nebulae.forEach(n => {
-                n.update();
-                n.draw();
-            });
-            stars.forEach(s => {
-                s.update();
-                s.draw();
-            });
-            animationFrameId = requestAnimationFrame(animate);
-        }
-        
-        const handleResize = () => {
+        const animate = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            init();
+            
+            // Set a solid black background
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            time += 0.002;
+
+            orbs.forEach(orb => {
+                // Update orb position using sine waves for smooth, organic movement
+                let newX = (Math.sin(time * orb.speedX * 1000) + 1) / 2;
+                let newY = (Math.cos(time * orb.speedY * 1000) + 1) / 2;
+
+                orb.x = newX;
+                orb.y = newY;
+
+                // Create a radial gradient for each orb
+                const gradient = ctx.createRadialGradient(
+                    orb.x * canvas.width,
+                    orb.y * canvas.height,
+                    0,
+                    orb.x * canvas.width,
+                    orb.y * canvas.height,
+                    orb.size * Math.min(canvas.width, canvas.height)
+                );
+
+                gradient.addColorStop(0, orb.color);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            });
+
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
+        const handleResize = () => {
+            // No need to re-initialize, the animate function handles resizing.
         };
 
         window.addEventListener('resize', handleResize);
-        init();
         animate();
 
         return () => {
@@ -132,6 +76,7 @@ const BackgroundCanvas = () => {
 // --- Custom Hook for Typing Effect ---
 const useTypingEffect = (text, speed = 80) => {
     const [displayedText, setDisplayedText] = useState('');
+
     useEffect(() => {
         if (!text) return;
         setDisplayedText('');
@@ -144,8 +89,10 @@ const useTypingEffect = (text, speed = 80) => {
                 clearInterval(typingInterval);
             }
         }, speed);
+
         return () => clearInterval(typingInterval);
     }, [text, speed]);
+
     return displayedText;
 };
 
@@ -153,6 +100,7 @@ const useTypingEffect = (text, speed = 80) => {
 const useOnScreen = (options) => {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
@@ -160,15 +108,18 @@ const useOnScreen = (options) => {
                 observer.unobserve(entry.target);
             }
         }, options);
+
         if (ref.current) {
             observer.observe(ref.current);
         }
+
         return () => {
             if (ref.current) {
                 observer.unobserve(ref.current);
             }
         };
     }, [ref, options]);
+
     return [ref, isVisible];
 };
 
