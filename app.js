@@ -1,7 +1,6 @@
 const { useState, useEffect, useRef } = React;
 const { createRoot } = ReactDOM;
 
-// --- Background Canvas Component ---
 const BackgroundCanvas = () => {
     const canvasRef = useRef(null);
 
@@ -11,7 +10,6 @@ const BackgroundCanvas = () => {
         let animationFrameId;
         let time = 0;
 
-        // Gradient "orb" properties
         const orbs = [
             { x: 0.5, y: 0.5, speedX: 0.0005, speedY: 0.0007, size: 0.8, color: 'rgba(255, 255, 255, 0.15)' }, // Soft White
             { x: 0.3, y: 0.7, speedX: -0.0006, speedY: 0.0005, size: 0.6, color: 'rgba(168, 85, 247, 0.15)' }, // Soft Purple
@@ -22,21 +20,18 @@ const BackgroundCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
-            // Set a solid black background
             ctx.fillStyle = '#000000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             time += 0.002;
 
             orbs.forEach(orb => {
-                // Update orb position using sine waves for smooth, organic movement
                 let newX = (Math.sin(time * orb.speedX * 1000) + 1) / 2;
                 let newY = (Math.cos(time * orb.speedY * 1000) + 1) / 2;
 
                 orb.x = newX;
                 orb.y = newY;
 
-                // Create a radial gradient for each orb
                 const gradient = ctx.createRadialGradient(
                     orb.x * canvas.width,
                     orb.y * canvas.height,
@@ -57,7 +52,6 @@ const BackgroundCanvas = () => {
         };
 
         const handleResize = () => {
-            // No need to re-initialize, the animate function handles resizing.
         };
 
         window.addEventListener('resize', handleResize);
@@ -73,7 +67,6 @@ const BackgroundCanvas = () => {
 };
 
 
-// --- Custom Hook for Typing Effect ---
 const useTypingEffect = (text, speed = 80) => {
     const [displayedText, setDisplayedText] = useState('');
 
@@ -96,7 +89,6 @@ const useTypingEffect = (text, speed = 80) => {
     return displayedText;
 };
 
-// --- Custom Hook for Scroll Animations ---
 const useOnScreen = (options) => {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
@@ -124,7 +116,6 @@ const useOnScreen = (options) => {
 };
 
 
-// --- Navigation Component ---
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -170,7 +161,6 @@ const NavBar = () => {
     );
 };
 
-// --- Home Component (UPDATED with Download Status) ---
 const Home = () => {
     const typedTitle = useTypingEffect("  Hi, I'm S. K. Pradarshan", 80);
     const [downloadStatus, setDownloadStatus] = useState('');
@@ -221,7 +211,6 @@ const Home = () => {
 };
 
 
-// --- Generic Section Component ---
 const Section = ({ id, title, children, className = '' }) => {
     const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
     return (
@@ -235,7 +224,6 @@ const Section = ({ id, title, children, className = '' }) => {
 };
 
 
-// --- About Component ---
 const About = () => (
     <Section id="about" title="About Me" className="bg-transparent">
         <div className="max-w-2xl mx-auto text-center bg-black/30 backdrop-blur-sm border border-white/10 p-8 rounded-lg shadow-lg">
@@ -249,7 +237,6 @@ const About = () => (
     </Section>
 );
 
-// --- Education Component ---
 const Education = () => {
     const educations = [
         { degree: 'B.E. Computer Science and Engineering', institution: 'SRM Valliammai Engineering College, Chennai', period: 'Expected Graduation: 2027' },
@@ -275,12 +262,11 @@ const Education = () => {
 };
 
 
-// --- Skills Component ---
 const Skills = () => {
     const skillCategories = [
         { category: 'Programming', skills: ['C++', 'Python', 'Java', 'JavaScript'] },
         { category: 'Web Development', skills: ['React', 'Redux', 'Next.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'Material-UI'] },
-        { category: 'Tools', skills: ['Git', 'VS Code', 'Linux', 'Postman'] }
+        { category: 'Tools', skills: ['Git', 'VS Code', 'Linux', 'Postman', 'PowerBI'] }
     ];
     return (
         <Section id="skills" title="My Skills" className="bg-transparent">
@@ -304,7 +290,6 @@ const Skills = () => {
 };
 
 
-// --- AchievementItem Component ---
 const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
     const [ref, isVisible] = useOnScreen({ threshold: 0.2 });
     const handleImageError = (e) => {
@@ -341,7 +326,6 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 };
 
 
-// --- Achievements Component ---
 const Achievements = () => {
     const achievements = [
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
@@ -370,7 +354,6 @@ const Achievements = () => {
     );
 };
 
-// --- Project Card Component ---
 const ProjectCard = ({ title, description, image, tech, link }) => (
     <div className="bg-black/30 backdrop-blur-sm border border-white/10 p-6 rounded-lg shadow-lg h-full flex flex-col">
         <div className="overflow-hidden rounded-lg mb-4">
@@ -390,30 +373,39 @@ const ProjectCard = ({ title, description, image, tech, link }) => (
 );
 
 
-// --- Projects Component ---
 const Projects = () => {
     const projects = [
         { title: 'CatchTheSqaure', description: 'Catch the Square is a fast-paced web game where you click moving squares to score points.', image: './catchthesquare.png', tech: ['React', 'JavaScript', 'CSS'], link: 'https://akesh11.github.io/CatchTheSquare/' },
         { title: 'ArtisanConnectAI', description: 'A vibrant marketplace platform connecting skilled artisans with global buyers.', image: './artisan.jpg', tech: ['React', 'Firebase', 'Tailwind CSS'], link: 'https://akesh11.github.io/ArtisanConnectAI/' },
-        { title: 'Weather predictor', description: 'A dynamic weather widget delivering real-time updates and accurate forecasts.', image: './weather2.png', tech: ['HTML', 'CSS', 'React'], link: 'https://akesh11.github.io/weather.widget/' }
+        { title: 'Weather predictor', description: 'A dynamic weather widget delivering real-time updates and accurate forecasts.', image: './weather2.png', tech: ['HTML', 'CSS', 'React'], link: 'https://akesh11.github.io/weather.widget/' },
+        { title: 'Echo Check', description: 'Check out whether the news u heard is true or not!!', image: './EchoCheck.png', tech: ['HTML', 'CSS', 'React'], link: 'https://akesh11.github.io/EchoCheck/' }
     ];
+
+    const extendedProjects = [...projects, ...projects];
+
     return (
         <Section id="projects" title="My Projects" className="bg-transparent">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project, index) => {
-                    const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-                    return (
-                        <div key={project.title} ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${index * 200}ms` }}>
-                            <ProjectCard {...project} />
-                        </div>
-                    );
-                })}
+            <div className="scrolling-wrapper">
+                <div className="scrolling-content">
+                    {extendedProjects.map((project, index) => {
+                        const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
+                        return (
+                            <div 
+                                key={`${project.title}-${index}`} 
+                                ref={ref} 
+                                className={`flex-shrink-0 w-80 md:w-96 reveal ${isVisible ? 'visible' : ''}`} 
+                                style={{ transitionDelay: `${index * 100}ms` }}
+                            >
+                                <ProjectCard {...project} />
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </Section>
     );
 };
 
-// --- Contact Component with Full Functionality ---
 const Contact = () => {
     const FORM_ENDPOINT = "https://formspree.io/f/xnnzopvv"; 
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -510,7 +502,6 @@ const Contact = () => {
 };
 
 
-// --- Main App Component ---
 const App = () => (
     <div>
         <BackgroundCanvas />
@@ -527,6 +518,5 @@ const App = () => (
     </div>
 );
 
-// Render the app
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
