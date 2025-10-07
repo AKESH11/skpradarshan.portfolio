@@ -329,6 +329,7 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 const Achievements = () => {
     const achievements = [
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
+        { title: 'AlgoRift, Sairam, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/algo.jpg'},
         { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
         { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './Certificates/mun.png' },
         { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './Certificates/sports.png' },
