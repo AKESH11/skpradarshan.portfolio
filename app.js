@@ -1,3 +1,5 @@
+import { Experimental_CssVarsProvider } from "@mui/material";
+
 const { useState, useEffect, useRef } = React;
 const { createRoot } = ReactDOM;
 
@@ -145,7 +147,7 @@ const NavBar = () => {
                     </svg>
                 </button>
                 <div className={`absolute md:relative top-full left-0 w-full md:w-auto bg-black/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none rounded-b-lg md:rounded-none transition-all duration-300 ease-in-out md:flex md:space-x-6 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 md:opacity-100 md:max-h-full'} overflow-hidden md:overflow-visible`}>
-                    {['Home', 'About', 'Education', 'Skills', 'Achievements', 'Projects', 'Contact'].map((item) => (
+                    {['Home', 'About', 'Education', 'Experience', 'Skills', 'Achievements', 'Projects', 'Contact'].map((item) => (
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}
@@ -261,6 +263,41 @@ const Education = () => {
     );
 };
 
+const Experience = () => {
+    const experiences = [
+        {
+            role: 'Research & Development Intern',
+            company: 'Bibliotech',
+            period: 'Summer 2025',
+            description: 'As a Research & Development Intern, I assisted the R&D team by creating testing models and optimizing code for `focsem` autofocus and `powerfocus` systems. My contributions included managing Python Package Index (PIP) distributions, supporting senior staff with experimental model creation, and authoring technical documentation for internal tools and research findings.'
+        },
+        {
+            role: 'Event Organizer',
+            company: 'CodeRizz Club',
+            period: 'College Tenure',
+            description: 'Co-organized 5+ technical events, including coding contests and workshops, for over 200 participants. I was responsible for managing logistics, promotions, and overall coordination to ensure successful execution of all events.'
+        }
+    ];
+    return (
+        <Section id="experience" title="Experience" className="bg-transparent">
+            <div className="max-w-2xl mx-auto grid gap-8">
+                {experiences.map((exp, index) => {
+                    const [ref, isVisible] = useOnScreen({ threshold: 0.2 });
+                    return (
+                        <div key={exp.role} ref={ref} className={`bg-black/30 backdrop-blur-sm border border-white/10 p-6 rounded-lg shadow-lg reveal ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${index * 200}ms` }}>
+                            <div className="flex justify-between items-baseline">
+                                <h3 className="text-xl md:text-2xl font-semibold gradient-text">{exp.role}</h3>
+                                <p className="text-sm text-gray-400">{exp.period}</p>
+                            </div>
+                            <p className="text-base font-medium text-gray-300 mb-3">{exp.company}</p>
+                            <p className="text-base text-gray-400">{exp.description}</p>
+                        </div>
+                    );
+                })}
+            </div>
+        </Section>
+    );
+};
 
 const Skills = () => {
     const skillCategories = [
@@ -328,8 +365,8 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 
 const Achievements = () => {
     const achievements = [
+        { title: 'AlgoRift, Sairam, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
-        { title: 'AlgoRift, Sairam, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/algo.jpg'},
         { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
         { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './Certificates/mun.png' },
         { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './Certificates/sports.png' },
@@ -511,6 +548,7 @@ const App = () => (
             <Home />
             <About />
             <Education />
+            <Experimence />
             <Skills />
             <Achievements />
             <Projects />
