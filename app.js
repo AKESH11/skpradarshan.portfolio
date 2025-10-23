@@ -547,7 +547,7 @@ const App = () => (
             <Home />
             <About />
             <Education />
-            <Experimence />
+            <Experience />
             <Skills />
             <Achievements />
             <Projects />
