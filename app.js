@@ -1,4 +1,3 @@
-import { Experimental_CssVarsProvider } from "@mui/material";
 
 const { useState, useEffect, useRef } = React;
 const { createRoot } = ReactDOM;
