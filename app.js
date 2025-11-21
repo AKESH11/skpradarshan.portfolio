@@ -1,5 +1,3 @@
-import { Experimental_CssVarsProvider } from "@mui/material";
-
 const { useState, useEffect, useRef } = React;
 const { createRoot } = ReactDOM;
 
@@ -365,6 +363,7 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 
 const Achievements = () => {
     const achievements = [
+        { title: 'Mind Grid', description: 'Secured 1st Technical coding event organised by CSI.', link: './Certificates/mindgrid.jpg' },   
         { title: 'AlgoRift, Sairam, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
         { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
@@ -548,7 +547,7 @@ const App = () => (
             <Home />
             <About />
             <Education />
-            <Experimence />
+            <Experience />
             <Skills />
             <Achievements />
             <Projects />
@@ -559,3 +558,4 @@ const App = () => (
 
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
+
