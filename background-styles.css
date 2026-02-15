@@ -1,0 +1,10 @@
+.background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ensure the canvas is behind all other content */
+    z-index: -1; 
+    background-color: #0a0f1f; /* A dark navy blue background color */
+}

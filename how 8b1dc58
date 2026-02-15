@@ -1,0 +1,56 @@
+[33mcommit 8b1dc5862ac2ff651fd1168167c43ff7414f7499[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: AKESH11 <global0251@gmail.com>
+Date:   Wed Jul 30 22:36:02 2025 +0530
+
+    Add portfolio website files
+
+[1mdiff --git a/AKESH11.github.io b/AKESH11.github.io[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fc1c609[m
+[1m--- /dev/null[m
+[1m+++ b/AKESH11.github.io[m
+[36m@@ -0,0 +1,43 @@[m
+[32m+[m[32m@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');[m
+[32m+[m
+[32m+[m[32mbody {[m
+[32m+[m[32m    font-family: 'Inter', sans-serif;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.fade-in {[m
+[32m+[m[32m    animation: fadeIn 1s ease-in;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.slide-up {[m
+[32m+[m[32m    animation: slideUp 0.8s ease-out;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.scale-hover {[m
+[32m+[m[32m    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.scale-hover:hover {[m
+[32m+[m[32m    transform: scale(1.03);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m@keyframes fadeIn {[m
+[32m+[m[32m    from { opacity: 0; }[m
+[32m+[m[32m    to { opacity: 1; }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m@keyframes slideUp {[m
+[32m+[m[32m    from { transform: translateY(30px); opacity: 0; }[m
+[32m+[m[32m    to { transform: translateY(0); opacity: 1; }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.gradient-text {[m
+[32m+[m[32m    background: linear-gradient(90deg, #60a5fa, #a855f7);[m
+[32m+[m[32m    -webkit-background-clip: text;[m
+[32m+[m[32m    background-clip: text;[m
+[32m+[m[32m    color: transparent;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m::selection {[m
+[32m+[m[32m    background: #60a5fa;[m
+[32m+[m[32m    color: #fff;[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
