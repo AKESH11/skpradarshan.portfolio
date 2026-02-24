@@ -367,6 +367,7 @@ const Achievements = () => {
         { title: 'Mind Grid', description: 'Secured 1st Technical coding event organised by CSI.', link: './Certificates/mindgrid.jpg' },   
         { title: 'AlgoRift, Sairam, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
+        { title: 'SpeakQuizy, CIT, Chennai', description: 'Secured 3rd Place in Coding Quest Contest.', link: './Certificates/SpeakQuizzy.jpg' },
         { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
         { title: 'Model United Nations', description: 'Secured honorable mentions in MUN UNEA committee.', link: './Certificates/mun.png' },
         { title: 'Sports Involvement', description: 'Secured 3rd Place in Inter-House Badminton Tournament.', link: './Certificates/sports.png' },
