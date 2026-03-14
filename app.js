@@ -190,7 +190,7 @@ const Home = () => {
                     <span className="inline-block w-1 h-10 md:h-12 bg-white animate-ping ml-2 opacity-75"></span>
                 </h1>
                 <p className="text-lg md:text-xl mb-6 text-gray-300 reveal visible" style={{ transitionDelay: '3s' }}>
-                    Aspiring Software Engineer | Full-Stack Developer | Game Development Enthusiast
+                    Software Engineer | Solving Media Crises through AI & Blockchain | Competitive Programmer & Full-Stack Architect
                 </p>
                 <div className="flex justify-center gap-4 reveal visible" style={{ transitionDelay: '3.2s' }}>
                     <a href="#projects" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition scale-hover">Explore My Work</a>
@@ -366,6 +366,7 @@ const Achievements = () => {
     const achievements = [
         { title: 'Mind Grid', description: 'Secured 1st Technical coding event organised by CSI.', link: './Certificates/mindgrid.jpg' },   
         { title: 'AlgoRift, Sairam, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
+        { title: 'Paper Presentation, XPLOITS, Chennai', description: 'Secured 1st Place in the Paper Presentation competition at SRM Valliammai Engineering College.', link: './Certificates/Paperpresentation_srmvec.jpeg' },
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
         { title: 'SpeakQuizy, CIT, Chennai', description: 'Secured 3rd Place in Coding Quest Contest.', link: './Certificates/SpeakQuizzy.jpg' },
         { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
@@ -414,9 +415,11 @@ const ProjectCard = ({ title, description, image, tech, link }) => (
 
 const Projects = () => {
     const projects = [
+        { title: 'VitalsNet', description: 'Combines rPPG, blockchain, and fingerprinting to verify media authenticity and detect deepfakes, securing truth in the digital era.', image: './VitalsNet_logo.png', tech: ['rPPG', 'Watermarking', 'Device Fingerprinting'], link: 'https://github.com/AKESH11/VitalsNet' },
+        { title: 'CrisisCtrl', description: 'A real-time emergency platform aggregating disaster data via the MERN stack and IoT to streamline life-saving response coordination.', image: './CrisisCtrl_image.jpeg', tech: ['MERN Stack', 'WebSockets', 'APIs'], link: 'https://github.com/AKESH11/CrisisCtrl' },
+        { title: 'BioVault', description: 'A decentralised Physiological media anchoring and consensual handshaking.', image: './BioVault_image.png', tech: ['C++', 'Blockchain', 'Artificial Intelligence'], link: 'https://github.com/AKESH11/BioVault' },
         { title: 'CatchTheSqaure', description: 'Catch the Square is a fast-paced web game where you click moving squares to score points.', image: './catchthesquare.png', tech: ['React', 'JavaScript', 'CSS'], link: 'https://akesh11.github.io/CatchTheSquare/' },
         { title: 'ArtisanConnectAI', description: 'A vibrant marketplace platform connecting skilled artisans with global buyers.', image: './artisan.jpg', tech: ['React', 'Firebase', 'Tailwind CSS'], link: 'https://akesh11.github.io/ArtisanConnectAI/' },
-        { title: 'Weather predictor', description: 'A dynamic weather widget delivering real-time updates and accurate forecasts.', image: './weather2.png', tech: ['HTML', 'CSS', 'React'], link: 'https://akesh11.github.io/weather.widget/' },
         { title: 'Echo Check', description: 'Check out whether the news u heard is true or not!!', image: './EchoCheck.png', tech: ['HTML', 'CSS', 'React'], link: 'https://akesh11.github.io/EchoCheck/' }
     ];
 
