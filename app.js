@@ -364,7 +364,8 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 
 const Achievements = () => {
     const achievements = [
-        { title: 'Mind Grid', description: 'Secured 1st Technical coding event organised by CSI.', link: './Certificates/mindgrid.jpg' },   
+        { title: 'Zyren\'26', description: '1st Place Winner | Outperformed 60+ Teams with SafeCrisisRoute', link: './Certificates/zyren.jpeg' },
+        { title: 'Mind Grid', description: 'Secured 1st Technical coding event organised by CSI.', link: './Certificates/mindgrid.jpeg' },   
         { title: 'AlgoRift, Sairam, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
         { title: 'Paper Presentation, XPLOITS, Chennai', description: 'Secured 1st Place in the Paper Presentation competition at XPLOITS, SRM VEC.', link: './Certificates/Paperpresentation_srmvec.jpeg' },
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
