@@ -364,10 +364,11 @@ const AchievementItem = ({ achievement, isExpanded, onToggle }) => {
 
 const Achievements = () => {
     const achievements = [
-        { title: 'Zyren\'26', description: '1st Place Winner | Outperformed 60+ Teams with SafeCrisisRoute', link: './Certificates/Zyren.jpeg' },
-        { title: 'Mind Grid', description: 'Secured 1st Place in Technical coding event organised by CSI.', link: './Certificates/mindgrid.jpg' },   
-        { title: 'AlgoRift, Sairam, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
-        { title: 'Paper Presentation, XPLOITS, Chennai', description: 'Secured 1st Place in the Paper Presentation competition at XPLOITS, SRM VEC.', link: './Certificates/Paperpresentation_srmvec.jpeg' },
+        { title: 'Zyren\'26, SRM Ramapuram, Chennai', description: '1st Place Winner in HACKATHON | Outperformed 60+ Teams with SafeCrisisRoute', link: './Certificates/Zyren.jpeg' },
+        { title: 'HERitage\'26, SRM KTR, Chengalpattu', description: 'Secured 1st Place in the IDEATHON showcasing the VitalsNet.', link: './Certificates/HERitage.jpeg' },
+        { title: 'Mind Grid, SRM VEC, Chennai', description: 'Secured 1st Place in COMPETITIVE CODING event organised by CSI.', link: './Certificates/mindgrid.jpg' },   
+        { title: 'AlgoRift, Sai Ram College, Chennai', description: 'Placed first in the Algorift coding competition at Sai Ram College', link: './Certificates/algo.jpg'},
+        { title: 'Paper Presentation, XPLOITS, Chennai', description: 'Secured 1st Place in the PAPER PRESENTATION competition at XPLOITS, SRM VEC.', link: './Certificates/Paperpresentation_srmvec.jpeg' },
         { title: 'TechQuest, CIT, Chennai', description: 'Secured 1st Place in Coding Quest Contest.', link: './Certificates/techquest.png' },
         { title: 'SpeakQuizy, CIT, Chennai', description: 'Secured 3rd Place in Coding Quest Contest.', link: './Certificates/SpeakQuizzy.jpg' },
         { title: 'BuzzFeed, SRM VEC, Chennai', description: 'Secured 3rd Place in Programming Contest.', link: './Certificates/buzzfeed.png' },
